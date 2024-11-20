@@ -37,19 +37,30 @@ def metrics():
             "disk_percent": 17.2,
         }
     """
-    metrics = get_system_metrics()
+    try:
 
-    cpu_percent = metrics.get("cpu_percent")
-    memory_percent = metrics.get("memory_percent")
-    disk_percent = metrics.get("disk_percent")
+        metrics = get_system_metrics()
 
-    new_metrics = SystemLog(
-        cpu_percent=cpu_percent,
-        memory_percent=memory_percent,
-        disk_percent=disk_percent,
-    )
+        cpu_percent = metrics.get("cpu_percent")
+        memory_percent = metrics.get("memory_percent")
+        disk_percent = metrics.get("disk_percent")
 
-    db.session.add(new_metrics)
-    db.session.commit()
+        new_metrics = SystemLog(
+            cpu_percent=cpu_percent,
+            memory_percent=memory_percent,
+            disk_percent=disk_percent,
+        )
 
-    return jsonify(metrics)
+        formatted_metrics = {
+            "Utilização da CPU": f"{cpu_percent:.2f}%",
+            "Memória utilizada": f"{memory_percent:.2f}%",
+            "Utilização do disco": f"{disk_percent:.2f}%"
+        }
+
+        db.session.add(new_metrics)
+        db.session.commit()
+
+        return jsonify(formatted_metrics)
+
+    except Exception as e:
+        return jsonify({"error": f"Erro ao processar as métricas: {str(e)}"}), 500
