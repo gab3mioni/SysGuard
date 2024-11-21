@@ -43,18 +43,26 @@ def metrics():
 
         cpu_percent = metrics.get("cpu_percent")
         memory_percent = metrics.get("memory_percent")
+        memory_total = metrics.get("memory_total")
+        memory_used = metrics.get("memory_used")
+        memory_free = metrics.get("memory_free")
         disk_percent = metrics.get("disk_percent")
 
         new_metrics = SystemLog(
             cpu_percent=cpu_percent,
             memory_percent=memory_percent,
+            memory_total=memory_total,
+            memory_used=memory_used,
+            memory_free=memory_free,
             disk_percent=disk_percent,
         )
 
         formatted_metrics = {
             "Utilização da CPU": f"{cpu_percent:.2f}%",
-            "Memória utilizada": f"{memory_percent:.2f}%",
-            "Utilização do disco": f"{disk_percent:.2f}%"
+            "Utilização do disco": f"{disk_percent:.2f}%",
+            "Memória total": f"{memory_total /1024**3:.2f} GB",
+            "Memória livre": f"{memory_free /1024**3:.2f} GB",
+            "Memória utilizada": f"{memory_used / 1024**3:.2f} GB ({memory_percent:.2f}%)",
         }
 
         db.session.add(new_metrics)
