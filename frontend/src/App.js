@@ -24,16 +24,21 @@ function App() {
     }, []);
 
     if (loading) {
-        return <p>Carregando...</p>;
+        return (
+            <div className="d-flex justify-content-center align-items-center" style={{ height: '100vh' }}>
+                <p>Carregando...</p>
+            </div>
+        );
     }
 
     return (
-        <div>
-            <h1>Métricas do Servidor</h1>
-            <ul>
+        <div className="container my-5">
+            <h1 className="text-center mb-4">Métricas do Servidor</h1>
+            <ul className="list-group">
                 {Object.entries(data).map(([key, value]) => (
-                    <li key={key}>
-                        {key}: {value}
+                    <li key={key} className="list-group-item d-flex justify-content-between align-items-center">
+                        <strong>{key}</strong>
+                        <span>{value}</span>
                     </li>
                 ))}
             </ul>
