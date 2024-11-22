@@ -4,3 +4,5 @@ SQLAlchemy
 psutil==5.9.7
 docker==6.0.1
 flask_sqlalchemy
+pandas==1.5.3
+numpy==1.23.0
