@@ -32,9 +32,11 @@ def metrics():
         json: Um objeto JSON contendo as métricas do sistema.
         Exemplo de resposta:
         {
-            "cpu_percent": 0.0,
-            "memory_percent": 1.6,
-            "disk_percent": 17.2,
+            "Memória livre": "4.17 GB",
+            "Memória total": "7.72 GB",
+            "Memória utilizada": "1.38 GB (21.70%)",
+            "Utilização da CPU": "0.00%",
+            "Utilização do disco": "2.00%"
         }
     """
     try:
