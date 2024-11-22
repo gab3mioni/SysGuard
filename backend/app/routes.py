@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify
 from flask_cors import CORS
 from .utils import get_system_metrics
-from .models import db, SystemLog
+from .models import db, SystemLog, export_to_csv
 
 bp = Blueprint('api', __name__, url_prefix='/api')
 CORS(bp, resources={r"/api/*": {"origins": "http://localhost:3001"}})
@@ -67,6 +67,7 @@ def metrics():
 
         db.session.add(new_metrics)
         db.session.commit()
+        export_to_csv()
 
         return jsonify(formatted_metrics)
 
