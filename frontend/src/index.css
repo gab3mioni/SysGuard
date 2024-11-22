@@ -1,13 +1,29 @@
-body {
+/* Reset de margens e preenchimento para o html e body */
+html, body {
   margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%; /* Garante que o body ocupe toda a altura */
+}
+
+/* Fontes globais para a aplicação */
+body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Definição de fontes para códigos */
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+/* Garantir que o contêiner root ocupe 100% da altura e largura */
+#root {
+  height: 100vh;
+  width: 100%; /* Certifica que a largura será 100% */
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; /* Evita que elementos vazem do contêiner */
 }
