@@ -1,7 +1,14 @@
 import psutil
 
 def get_system_metrics():
-    """Retorna métricas de CPU e memória."""
+    """
+    Retorna métricas do sistema, incluindo dados de CPU, memória e disco.
+
+    Return:
+        dict: Um dicionário contendo os seguintes dados:
+            "cpu_percent": (float)
+
+    """
 
     metrics = {
         "cpu_percent": psutil.cpu_percent(interval=1),
